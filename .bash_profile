@@ -25,6 +25,4 @@ pyenv_python_version(){
     [[ -n "$result" ]] && echo "($result) "
 }
 
-PYENV_PYTHON_VERSION="\$(pyenv_python_version)";
-
-export PS1="${PYENV_PYTHON_VERSION}\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[33;1m\]\w\[\033[m\] \$(git_prompt)$ "
+export PS1="\$(pyenv_python_version)\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h\[\033[33;1m\]\w\[\033[m\] \$(git_prompt)$ "
