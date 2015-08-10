@@ -18,9 +18,11 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 pyenv_python_version(){
     result=""
-    pyenv_version="$(pyenv version-name)";
-    if [ -n "$pyenv_version" ]; then
-        result="$pyenv_version";
+    if pyenv 2>/dev/null; then
+        pyenv_version="$(pyenv version-name)";
+        if [ -n "$pyenv_version" ]; then
+            result="$pyenv_version";
+        fi
     fi
     [[ -n "$result" ]] && echo "($result) "
 }
