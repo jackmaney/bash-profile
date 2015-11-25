@@ -2,11 +2,13 @@ export CLICOLOR=1
 
 ## pyenv
 
-export PYENV_ROOT=$HOME/.pyenv
-export PATH=${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:$PATH
+if hash pyenv 2>/dev/null; then
+    export PYENV_ROOT=$HOME/.pyenv
+    export PATH=${PYENV_ROOT}/shims:${PYENV_ROOT}/bin:$PATH
 
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi
 
 # Get name and hash of the current git repo (if it exists)
 
@@ -18,7 +20,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 pyenv_python_version(){
     result=""
-    if pyenv 2>/dev/null; then
+    if hash pyenv 2>/dev/null; then
         pyenv_version="$(pyenv version-name)";
         if [ -n "$pyenv_version" ]; then
             result="$pyenv_version";
