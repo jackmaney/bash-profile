@@ -57,3 +57,11 @@ brew() {
                 command /usr/local/bin/brew "$@"
         fi
 }
+
+### Replace '//' with '/' in path and dedupe
+# This Python snippet should work with Python 2.6+, and should be 2 & 3 compatible.
+
+export PATH=$(echo $PATH | python -c 'from __future__ import print_function;\
+    import sys,re;\
+    path=[re.sub("/+", "/", x.strip()) for x in sys.stdin.read().split(":") if x.strip()];\
+    print(":".join([x for i, x in enumerate(path) if x not in path[:i]]))')
