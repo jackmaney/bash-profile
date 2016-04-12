@@ -45,8 +45,7 @@ export HOMEBREW_GITHUB_API_TOKEN="OldMcDonaldHadAFarmEIEI0"
 # Also, this assumes that https_proxy and HTTPS_PROXY point to the same thing.
 #
 # This function hijacks the `brew` executable, changing the HTTPS proxy to
-# HTTP if a `brew search` command is being done. Otherwise, it just
-# executes the command as given.
+# HTTP, executing the command as given, and then restoring https_proxy.
 
 brew() {
     https_proxy=${http_proxy}
