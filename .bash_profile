@@ -49,13 +49,9 @@ export HOMEBREW_GITHUB_API_TOKEN="OldMcDonaldHadAFarmEIEI0"
 # executes the command as given.
 
 brew() {
-        if [ "$1" == "search" ]; then
-                https_proxy=${http_proxy}
-                command /usr/local/bin/brew "$@"
-                https_proxy=${HTTPS_PROXY}
-        else
-                command /usr/local/bin/brew "$@"
-        fi
+    https_proxy=${http_proxy}
+    command /usr/local/bin/brew "$@"
+    https_proxy=${HTTPS_PROXY}
 }
 
 ### Replace '//' with '/' in path and dedupe
